@@ -273,4 +273,15 @@ object AmendRegistration extends BasePage {
       case _                  => throw new Exception("No version to check")
     }
   }
+
+  def checkAmendedAnswers(amendJourney: String): Unit = {
+    val body = Driver.instance.findElement(By.tagName("body")).getText
+
+    amendJourney match {
+      case "noAmendedAnswers" =>
+        Assert.assertTrue(body.contains("You have not changed any of your client's registration details."))
+      case _                  =>
+        throw new Exception("This amend variation does not exist")
+    }
+  }
 }

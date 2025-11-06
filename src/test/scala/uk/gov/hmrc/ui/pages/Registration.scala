@@ -147,8 +147,11 @@ object Registration extends BasePage {
 
   def selectNETPCheckbox(): Unit = {
     click(By.id("declaration"))
-    click(submitButton)
+    clickSubmit()
   }
+
+  def clickSubmit(): Unit =
+    click(submitButton)
 
   def checkProblemPage(): Unit = {
     fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("h1")))

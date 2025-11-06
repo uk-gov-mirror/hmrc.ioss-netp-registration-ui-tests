@@ -38,6 +38,13 @@ class AmendRegistrationSpec extends BaseSpec {
       Then("the correct Registration details are displayed for a UK based client with a UK VRN")
       amendRegistration.checkIossNumber("IM9001144771")
       amendRegistration.checkRegistrationDetails("ukBasedUkVrn")
+
+      When("the intermediary submits the registration without amending any details")
+      registration.clickSubmit()
+
+      Then("the successful-amend page shows that no information in the registration has been amended")
+      registration.checkJourneyUrl("successful-amend")
+      amendRegistration.checkAmendedAnswers("noAmendedAnswers")
     }
 
     Scenario(
@@ -78,8 +85,15 @@ class AmendRegistrationSpec extends BaseSpec {
       registration.checkJourneyUrl("change-your-registration")
       amendRegistration.checkIossNumber("IM9001144773")
 
-      Then("the correct Registration details following the amendment")
+      Then("the Registration details are correct following the amendment")
       amendRegistration.checkRegistrationDetails("ukBasedUtrAmended")
+
+      When("the intermediary submits the registration")
+      registration.clickSubmit()
+
+      Then("the successful-amend page shows the correct amendments to the registration")
+      registration.checkJourneyUrl("successful-amend")
+      // checks to be added in VEI-625/VEI-629
     }
 
     Scenario(
@@ -119,8 +133,15 @@ class AmendRegistrationSpec extends BaseSpec {
       registration.checkJourneyUrl("change-your-registration")
       amendRegistration.checkIossNumber("IM9001144778")
 
-      Then("the correct Registration details following the amendment")
+      Then("the Registration details are correct following the amendment")
       amendRegistration.checkRegistrationDetails("ukBasedNinoAmended")
+
+      When("the intermediary submits the registration")
+      registration.clickSubmit()
+
+      Then("the successful-amend page shows the correct amendments to the registration")
+      registration.checkJourneyUrl("successful-amend")
+      // checks to be added in VEI-625/VEI-629
     }
 
     Scenario(
@@ -173,8 +194,15 @@ class AmendRegistrationSpec extends BaseSpec {
       registration.checkJourneyUrl("change-your-registration")
       amendRegistration.checkIossNumber("IM9001144775")
 
-      Then("the correct Registration details following the amendment")
+      Then("the Registration details are correct following the amendment")
       amendRegistration.checkRegistrationDetails("nonUkBasedUkVrnAmended")
+
+      When("the intermediary submits the registration")
+      registration.clickSubmit()
+
+      Then("the successful-amend page shows the correct amendments to the registration")
+      registration.checkJourneyUrl("successful-amend")
+      // checks to be added in VEI-625/VEI-629
     }
 
     Scenario(
@@ -237,8 +265,15 @@ class AmendRegistrationSpec extends BaseSpec {
       registration.checkJourneyUrl("change-your-registration")
       amendRegistration.checkIossNumber("IM9001144777")
 
-      Then("the correct Registration details following the amendment")
+      Then("the Registration details are correct following the amendment")
       amendRegistration.checkRegistrationDetails("nonUkBasedFtrAmended")
+
+      When("the intermediary submits the registration")
+      registration.clickSubmit()
+
+      Then("the successful-amend page shows the correct amendments to the registration")
+      registration.checkJourneyUrl("successful-amend")
+      // checks to be added in VEI-625/VEI-629
     }
 
     Scenario("Intermediary can amend contact details in a NETP registration") {
