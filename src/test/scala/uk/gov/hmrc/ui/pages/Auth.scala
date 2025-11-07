@@ -60,6 +60,8 @@ object Auth extends BasePage {
         s"$registrationUrl$journeyUrl/start-amend-journey/IM9001144777"
       case "minimalAmend"                           =>
         s"$registrationUrl$journeyUrl/start-amend-journey/IM9001144881"
+      case "failureAmend"                           =>
+        s"$registrationUrl$journeyUrl/start-amend-journey/IM9002222222"
       case _                                        =>
         s"$registrationUrl$journeyUrl"
     }
@@ -89,6 +91,7 @@ object Auth extends BasePage {
         case "multipleSaved" => "IN9001114567"
         case "oneSaved"      => "IN9002224567"
         case "minimalAmend"  => "IN9008888887"
+        case "failureAmend"  => "IN900666001"
         case _               => "IN9001234567"
       }
       sendKeys(By.id("input-1-0-value"), iossNumber)

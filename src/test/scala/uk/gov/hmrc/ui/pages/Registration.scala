@@ -467,4 +467,7 @@ object Registration extends BasePage {
     fluentWait.until(ExpectedConditions.urlContains(url))
     getCurrentUrl should startWith(url)
   }
+
+  def clickCancel(): Unit =
+    click(By.id("cancel"))
 }
