@@ -819,7 +819,6 @@ class AmendRegistrationSpec extends BaseSpec {
       registration.checkJourneyUrl("change-your-registration")
       amendRegistration.checkIossNumber("IM9001144881")
 
-      // cancel not currently working - bug
       When("the intermediary clicks cancel")
       registration.clickCancel()
 
@@ -843,7 +842,7 @@ class AmendRegistrationSpec extends BaseSpec {
       registration.clickSubmit()
 
       Then("the submission failure page is displayed")
-//      not currently being displayed - bug
+      registration.checkJourneyUrl("error-submitting-amend")
     }
   }
 }
