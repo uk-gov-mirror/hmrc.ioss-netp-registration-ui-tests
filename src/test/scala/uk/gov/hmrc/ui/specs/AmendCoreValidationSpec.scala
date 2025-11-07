@@ -78,6 +78,13 @@ class AmendCoreValidationSpec extends BaseSpec {
       And("the intermediary is on the change-your-registration page")
       registration.checkJourneyUrl("change-your-registration")
       amendRegistration.checkIossNumber("IM9001144881")
+
+      When("the intermediary submits the registration")
+      registration.clickSubmit()
+
+      Then("the successful-amend page shows the correct information in the registration has been amended")
+      registration.checkJourneyUrl("successful-amend")
+      amendRegistration.checkAmendedAnswers("coreValidationFixedEstablishments")
     }
 
     Scenario("Intermediary can add quarantined fixed establishments when amending their registration") {
@@ -132,6 +139,13 @@ class AmendCoreValidationSpec extends BaseSpec {
       And("the intermediary is on the change-your-registration page")
       registration.checkJourneyUrl("change-your-registration")
       amendRegistration.checkIossNumber("IM9001144881")
+
+      When("the intermediary submits the registration")
+      registration.clickSubmit()
+
+      Then("the successful-amend page shows the correct information in the registration has been amended")
+      registration.checkJourneyUrl("successful-amend")
+      amendRegistration.checkAmendedAnswers("coreValidationFixedEstablishments")
     }
 
     Scenario(
@@ -158,6 +172,13 @@ class AmendCoreValidationSpec extends BaseSpec {
       And("the intermediary is on the change-your-registration page")
       registration.checkJourneyUrl("change-your-registration")
       amendRegistration.checkIossNumber("IM9001144777")
+
+      When("the intermediary submits the registration")
+      registration.clickSubmit()
+
+      Then("the successful-amend page shows the correct information in the registration has been amended")
+      registration.checkJourneyUrl("successful-amend")
+      // checks to be added in VEI-625/VEI-629
     }
 
     Scenario(
@@ -184,6 +205,13 @@ class AmendCoreValidationSpec extends BaseSpec {
       And("the intermediary is on the change-your-registration page")
       registration.checkJourneyUrl("change-your-registration")
       amendRegistration.checkIossNumber("IM9001144777")
+
+      When("the intermediary submits the registration")
+      registration.clickSubmit()
+
+      Then("the successful-amend page shows the correct information in the registration has been amended")
+      registration.checkJourneyUrl("successful-amend")
+      // checks to be added in VEI-625/VEI-629
     }
   }
 }

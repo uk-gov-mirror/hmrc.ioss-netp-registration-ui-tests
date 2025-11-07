@@ -278,9 +278,9 @@ object AmendRegistration extends BasePage {
     val body = Driver.instance.findElement(By.tagName("body")).getText
 
     amendJourney match {
-      case "noAmendedAnswers"      =>
+      case "noAmendedAnswers"                  =>
         Assert.assertTrue(body.contains("You have not changed any of your client's registration details."))
-      case "contactDetails"        =>
+      case "contactDetails"                    =>
         Assert.assertTrue(
           body.contains(
             "You changed the following details:\n" +
@@ -288,7 +288,7 @@ object AmendRegistration extends BasePage {
               "Email address amend-test@email.com"
           )
         )
-      case "editExisting"          =>
+      case "editExisting"                      =>
         Assert.assertTrue(
           body.contains(
             "You changed the following details:\n" +
@@ -299,7 +299,7 @@ object AmendRegistration extends BasePage {
               // missing changed country - bug
           )
         )
-      case "yesToNo"               =>
+      case "yesToNo"                           =>
         Assert.assertTrue(
           body.contains(
             "You changed the following details:\n" +
@@ -311,7 +311,7 @@ object AmendRegistration extends BasePage {
               // missing Fixed establishments in other countries No - bug
           )
         )
-      case "noToYes"               =>
+      case "noToYes"                           =>
         Assert.assertTrue(
           body.contains(
             "You changed the following details:\n" +
@@ -330,7 +330,7 @@ object AmendRegistration extends BasePage {
               // added line duplicated in error - bug
           )
         )
-      case "websites"              =>
+      case "websites"                          =>
         Assert.assertTrue(
           body.contains(
             "You changed the following details:\n" +
@@ -339,7 +339,7 @@ object AmendRegistration extends BasePage {
               "http://anothertest.co"
           )
         )
-      case "previousRegistrations" =>
+      case "previousRegistrations"             =>
         Assert.assertTrue(
           body.contains(
             "You changed the following details:\n" +
@@ -349,7 +349,19 @@ object AmendRegistration extends BasePage {
               // missing label in messages file - bug
           )
         )
-      case _                       =>
+      case "coreValidationFixedEstablishments" =>
+        Assert.assertTrue(
+          body.contains(
+            "You changed the following details:\n" +
+              "Eu tax details added Malta\n" +
+              "Portugal\n" +
+              "Eu tax details added Malta\n" +
+              "Portugal"
+              // Missing Fixed establishments in other countries no to yes - bug
+              // duplicated added countries section - bug
+          )
+        )
+      case _                                   =>
         throw new Exception("This amend variation does not exist")
     }
   }
